@@ -13,7 +13,7 @@ for pair in pairs:
 print(result)
 
 # Part 2 - not perfect because assumes that there is no do() after last don't()
-full_list = (re.findall(r"^(.*?)don't\(\)",data) + re.findall(r"do\(\)(?:(?!don't\(\)).)*", data, re.DOTALL))
+full_list = (re.findall(r"^(.*?)don't\(\)",data) + re.findall(r"do\(\)(.*?)don't\(\)", data, re.DOTALL))
 new_data = ''.join( full_list)
 pairs = re.findall(r"mul\(\b([0-9]+)\b,\b([0-9]+)\b\)", new_data)
 result = 0
