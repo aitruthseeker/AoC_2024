@@ -41,5 +41,17 @@ for i in range(len(data[0])):
         diag_str_lower_left = ''.join([(data[x+i][n_cols-x-1]) for x in range(n_rows-i)])
         xmas_diag += xmas_count(diag_str_upper_right) + xmas_count(diag_str_upper_left) + xmas_count(diag_str_lower_right) + xmas_count(diag_str_lower_left)
 
-
 print(xmas_cols+xmas_rows+xmas_diag)
+
+# Part 2
+mas_sum = 0
+check_ms = set(list(['M','S']))
+for i in range(1,len(data)-1):
+    for j in range(1, len(data[0])-1):
+        if data[i][j] == 'A':
+            check_l_diag = len(check_ms.difference(set(list([data[i-1][j-1], data[i+1][j+1]])))) == 0
+            check_r_diag = len(check_ms.difference(set(list([data[i-1][j+1], data[i+1][j-1]])))) == 0
+            if check_l_diag and check_r_diag:
+                mas_sum +=1
+
+print(mas_sum)
